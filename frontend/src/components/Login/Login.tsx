@@ -26,7 +26,7 @@ const Login = () => {
       const existingUser = await axios.post(
         'https://todo-application-tuir.onrender.com/api/login',
         {
-          username: userInfo.username,
+          email: userInfo.email,
           password: userInfo.password,
         }
       );
@@ -50,15 +50,17 @@ const Login = () => {
             <div className='login-inputFields'>
               <div className='login-inputGroup'>
                 <input
-                  type='text'
-                  placeholder='Username'
-                  name='username'
+                  required
+                  type='email'
+                  placeholder='Email'
+                  name='email'
                   onChange={handleInput}
-                  value={userInfo?.username}
+                  value={userInfo?.email}
                 />
               </div>
               <div className='login-inputGroup'>
                 <input
+                  required
                   type='password'
                   placeholder='Password'
                   name='password'

@@ -7,7 +7,8 @@ import {
 } from 'react';
 
 export interface User {
-  username: string;
+  username?: string;
+  email: string;
   password: string;
   token?: string;
 }
@@ -25,7 +26,7 @@ export const UserContext = createContext<UserContextType | null>(null);
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [userInfo, setUserInfo] = useState<User>({
-    username: '',
+    email: '',
     password: '',
   });
 

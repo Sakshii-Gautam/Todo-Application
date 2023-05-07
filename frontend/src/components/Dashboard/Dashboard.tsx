@@ -69,7 +69,7 @@ const Dashboard = () => {
 
   const handleLogout = () => {
     localStorage.clear();
-    setUserInfo({ username: '', password: '' });
+    setUserInfo({ email: '', password: '' });
     toast.success('Successfully logged out!');
     navigate('/login');
   };
@@ -81,6 +81,8 @@ const Dashboard = () => {
       return updatedTodos;
     });
   };
+
+  console.log(userInfo);
 
   return (
     <div className='dashboard-wrapper'>

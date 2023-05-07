@@ -11,22 +11,24 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const generateToken = (username) => {
-  return jwt.sign({ username }, process.env.JWT_SECRET_KEY, {
+const generateToken = (email) => {
+  return jwt.sign({ email }, process.env.JWT_SECRET_KEY, {
     expiresIn: '7d',
   });
 };
 
 app.post('/api/login', (req, res) => {
-  const { username, password } = req.body;
+  console.log(req.body);
+  const { email, password } = req.body;
   const user = users.find(
-    (user) => user.username === username && user.password === password
+    (user) => user.email === email && user.password === password
   );
 
   if (user) {
     res.status(200).json({
       username: user.username,
-      token: generateToken(user.username),
+      email: user.email,
+      token: generateToken(user.email),
     });
   } else {
     res.status(400).send('Invalid Credentials');
