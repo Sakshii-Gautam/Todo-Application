@@ -1,6 +1,6 @@
 # Todo-Application
 
-Deployed Application Link: [React Todo Application](app-todos-lists.netlify.app)  
+Deployed Application Link: [React Todo Application](https://app-todos-lists.netlify.app/)  
 
 This is a React application that features a login page and a dashboard page. The dashboard displays the user's profile information and a list of their todos. The application implements user authentication using a secure token-based authentication (JWT) and utilizes React Context API to store login user information. It also includes logout functionality, the ability to add new todos, and a feature for nested todos (sub tasks).   
 
