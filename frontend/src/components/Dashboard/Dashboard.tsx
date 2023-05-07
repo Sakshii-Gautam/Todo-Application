@@ -82,8 +82,6 @@ const Dashboard = () => {
     });
   };
 
-  console.log(userInfo);
-
   return (
     <div className='dashboard-wrapper'>
       <div className='dashboard-header'>
