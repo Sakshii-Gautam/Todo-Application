@@ -1,4 +1,4 @@
-import { FormEvent, useContext } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { UserContext, UserContextType } from '../../Contexts/UserContext';
@@ -6,6 +6,7 @@ import axios from 'axios';
 import './styles.css';
 
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { userInfo, setUserInfo } = useContext(
     UserContext as React.Context<UserContextType>
   );
@@ -23,6 +24,7 @@ const Login = () => {
   const handleSignupFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const existingUser = await axios.post(
         'https://todo-application-tuir.onrender.com/api/login',
         {
@@ -37,6 +39,7 @@ const Login = () => {
     } catch (error: any) {
       toast.error(error.response.data);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -68,6 +71,7 @@ const Login = () => {
                   value={userInfo?.password}
                 />
               </div>
+              {isLoading && <span className='loader'></span>}
             </div>
 
             <div className='login-buttonContainer'>
